@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SamayaElectronicsRestApi.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,10 @@ namespace SamayaElectronicsRestApi.Infrastructure
         {
             service.AddDbContextPool<SamayaDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("MyDataBaseConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("MyDataBaseConnection"))
+                       .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name },
+                        LogLevel.Information)
+                       .EnableSensitiveDataLogging();
             });
         }
     }

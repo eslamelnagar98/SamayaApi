@@ -8,17 +8,17 @@ namespace SamayaElectronics.Api.Helpers
 {
     public class PageList<T>:List<T>
     {
-        public int TotalCount { get; set; }
+        public float TotalCount { get; set; }
 
-        public int TotalPages { get; set; }
+        public float TotalPages { get; set; }
 
         public int CurrentPage { get; set; }
 
         public bool HasPrevious => CurrentPage > 1;
 
-        public bool HasNext => CurrentPage < TotalCount;
+        public bool HasNext => CurrentPage < TotalPages;
 
-        public PageList(List<T> data, int pageNum, int pageSize, int count)
+        public PageList(List<T> data, int pageNum, float pageSize, float count)
         {
             TotalCount = count;
             TotalPages = count / pageSize;

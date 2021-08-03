@@ -59,6 +59,23 @@ namespace SamayaElectronics.Api.Controllers
             return Ok(employee);
         }
 
+
+        //[HttpGet("{name}",Name = "GetEmployeeByName")]
+        //public IActionResult GetEmployeeByName(string name)
+        //{
+        //    if (name is null)
+        //        return NotFound();
+        //    var employee = _unitOfWork.Employee ;
+
+        //    if (employee is null)
+        //        return NotFound();
+
+        //    return Ok(employee);
+        //}
+
+
+
+
         [HttpPost]
         public IActionResult AddNewEmployee(Employee employee)
         {
